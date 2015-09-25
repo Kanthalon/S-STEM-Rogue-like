@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "Control.h"
 
 #define GROUND 200
 #define FRAMETIME 0.05
@@ -83,8 +84,12 @@ int main() {
 }
 
 void gravity(sf::Vector2f pos, sf::Vector2f &spd) {
-	if (pos.y < GROUND && !jump) {
-		spd.y += 1;
+	if (pos.y < GROUND && !jump) 
+	{
+		if (spd.y < MAX_VEL_Y)
+		{
+			spd.y += GRAVITY;
+		}
 	}
 }
 
