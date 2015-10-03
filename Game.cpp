@@ -12,13 +12,20 @@ bool moveLeft = false;
 int main() {
 	sf::RenderWindow window(sf::VideoMode(300,300), "Tutorial Title", sf::Style::Default);
 	window.setKeyRepeatEnabled(false);
-	sf::Vector2f siz, pos, spd;
-	siz.x = 10;
-	siz.y = 20;
+	sf::Vector2f siz, siz2, spd;
+	siz2.x = 16;
+	siz2.y = 16;
+	siz.x = 16;
+	siz.y = 32;
 	spd.x = 0;
 	spd.y = 0;
-	sf::RectangleShape rect(siz);
 	Player player;
+	sf::RectangleShape rect(player.getDim());
+	sf::RectangleShape interest[6];
+	for (int i = 0; i < 6; i++) {
+		interest[i] = sf::RectangleShape(siz2);
+		interest[i].setFillColor(sf::Color::Red);
+	}
 	sf::Clock loopClock;
 	sf::Time loopTime;
 	rect.setFillColor(sf::Color::Blue);
@@ -53,8 +60,15 @@ int main() {
 		if (loopTime.asSeconds() > FRAMETIME) {
 			loopClock.restart();
 			player.move();
+			sf::Vector2f *aoi = player.getBlocksOfInterest();
+			for (int i = 0; i < 6; i++) {
+				interest[i].setPosition(aoi[i]);
+			}
 			rect.setPosition(player.getPos());
 			window.clear();
+			for (int i = 0; i < 6; i++) {
+				window.draw(interest[i]);
+			}
 			window.draw(rect);
 			window.display();
 		}

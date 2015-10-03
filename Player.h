@@ -33,6 +33,14 @@ class Player : public Entity
 		Player();
 		sf::Vector2f getPos();
 		void setPos(sf::Vector2f pos);
+		sf::Vector2f getDim();
+		void setDim(sf::Vector2f dim);
+		sf::Vector2f getIntPos();
+		void setIntPos(sf::Vector2f pos);
+		sf::Vector2f getIntDim();
+		void setIntDim(sf::Vector2f dim);
+		sf::Vector2f* getBlocksOfInterest();
+		void collide(sf::Vector2f*);
 		void jump();
 		void endJump();
 		void gravity();

@@ -6,8 +6,8 @@
 class Entity
 {
 	protected:
-		sf::Vector2f pos;
-		int width, height;
+		sf::Vector2f pos, dim;
+		sf::Vector2i intPos, intDim;
 		bool coll, grav;
 		int* sprites;
 		int sprite;
@@ -15,6 +15,7 @@ class Entity
 	public:
 		sf::Vector2f getPos();
 		void setPos(sf::Vector2f pos);
+		sf::Vector2f getDim();
 };
 
 #endif

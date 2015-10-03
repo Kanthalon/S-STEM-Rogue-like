@@ -2,7 +2,7 @@
 #define CONTROL_H
 
 #define NUM_ITEMS 50
-#define FRAMETIME 0.02
+#define FRAMETIME 0.017
 #define GROUND 200
 
 #include "Physics.h"
