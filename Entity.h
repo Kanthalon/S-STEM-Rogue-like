@@ -3,19 +3,21 @@
 
 #include <SFML/System.hpp>
 
+using namespace sf;
+
 class Entity
 {
 	protected:
-		sf::Vector2f pos, dim;
-		sf::Vector2i intPos, intDim;
+		Vector2f pos, dim;
+		Vector2i intPos, intDim;
 		bool coll, grav;
 		int* sprites;
 		int sprite;
 
 	public:
-		sf::Vector2f getPos();
-		void setPos(sf::Vector2f pos);
-		sf::Vector2f getDim();
+		Vector2f getPos();
+		void setPos(Vector2f pos);
+		Vector2f getDim();
 };
 
 #endif

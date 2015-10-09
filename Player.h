@@ -4,6 +4,8 @@
 #include "Control.h"
 #include "Entity.h"
 
+using namespace sf;
+
 #define MAX_ATK_SPD
 #define MAX_JUMPS 4
 #define NUM_DMG_MULTS 4
@@ -27,20 +29,20 @@ class Player : public Entity
 		int jumps;
 		bool jumping;
 		int jumpframes;
-		sf::Vector2f velocity;
+		Vector2f velocity;
 
 	public:
 		Player();
-		sf::Vector2f getPos();
-		void setPos(sf::Vector2f pos);
-		sf::Vector2f getDim();
-		void setDim(sf::Vector2f dim);
-		sf::Vector2f getIntPos();
-		void setIntPos(sf::Vector2f pos);
-		sf::Vector2f getIntDim();
-		void setIntDim(sf::Vector2f dim);
-		sf::Vector2f* getBlocksOfInterest();
-		void collide(sf::Vector2f*);
+		Vector2f getPos();
+		void setPos(Vector2f pos);
+		Vector2f getDim();
+		void setDim(Vector2f dim);
+		Vector2f getIntPos();
+		void setIntPos(Vector2f pos);
+		Vector2f getIntDim();
+		void setIntDim(Vector2f dim);
+		Vector2f* getBlocksOfInterest();
+		void collide(Vector2f*);
 		void jump();
 		void endJump();
 		void gravity();

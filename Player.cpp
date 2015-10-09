@@ -13,22 +13,22 @@ Player::Player()
 	dim.y = 32;
 }
 
-sf::Vector2f Player::getPos()
+Vector2f Player::getPos()
 {
 	return pos;
 }
 
-sf::Vector2f Player::getDim()
+Vector2f Player::getDim()
 {
 	return dim;
 }
 
-void Player::setPos(sf::Vector2f newPos)
+void Player::setPos(Vector2f newPos)
 {
 	pos = newPos;
 }
 
-void Player::setDim(sf::Vector2f newDim)
+void Player::setDim(Vector2f newDim)
 {
 	dim = newDim;
 }
@@ -96,16 +96,16 @@ void Player::move() {
 	intPos.y = pos.y;
 }
 
-sf::Vector2f* Player::getBlocksOfInterest()
+Vector2f* Player::getBlocksOfInterest()
 {
-	static sf::Vector2f ret[6];
+	static Vector2f ret[6];
 	int index = 0;
 	int map = 0xfffffff0;
 	intPos.x = intPos.x & map;
 	intPos.y = intPos.y & map;
 	for(int i = 0; i < 3; i++) {
 		for(int j = 0; j < 2; j++) {
-			ret[index++] = sf::Vector2f(intPos.x+j*16, intPos.y+i*16);
+			ret[index++] = Vector2f(intPos.x+j*16, intPos.y+i*16);
 		}
 	}
 	return ret;
