@@ -11,7 +11,7 @@ namespace SGE
 		public:
 			StateManager();
 			virtual ~StateManager();
-			bool AddHandler(TStateHandler* handler);
+			bool AddHandler(IStateHandler* handler);
 			IStateHandler& GetHandler(typeStateHandlerID id);
 
 		private:
@@ -19,6 +19,6 @@ namespace SGE
 
 
 	}
-}
+};
 
 #endif

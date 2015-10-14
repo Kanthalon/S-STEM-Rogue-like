@@ -25,7 +25,7 @@ namespace SGE
 		if(itr != handlers.end())
 		{
 			IAssetHandler* result = itr->second;
-			return *result
+			return *result;
 		}
 		else
 		{

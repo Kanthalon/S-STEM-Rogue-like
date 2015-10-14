@@ -16,6 +16,9 @@ namespace SGE
 			bool DropReference(typeAssetID id);
 			bool IsLoaded();
 			bool LoadAsset(typeAssetID id);
+		private:
+			static typeAssetHandlerID idOffset;
+			typeAssetHandlerID id;
 	}
 }
 

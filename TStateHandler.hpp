@@ -16,6 +16,9 @@ namespace SGE
 			bool DropReference(typeStateID id);
 			bool IsLoaded();
 			bool LoadState(typeStateID id);
+		private:
+			static typeStateHandlerID idOffset;
+			typeStateHandlerID id;
 	}
 }
 

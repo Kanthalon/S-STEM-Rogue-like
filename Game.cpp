@@ -1,78 +1,104 @@
-#include <SFML/Graphics.hpp>
-#include <iostream>
-#include "Control.h"
-#include "Player.h"
 
-using namespace sf;
+#include "Game.hpp"
 
-bool canJump = true;
-bool jump = false;
-bool moveRight = false;
-bool moveLeft = false;
-
-
-int tempmain() {
-	RenderWindow window(VideoMode(300,300), "Tutorial Title", Style::Default);
-	window.setKeyRepeatEnabled(false);
-	Vector2f siz, siz2, spd;
-	siz2.x = 16;
-	siz2.y = 16;
-	siz.x = 16;
-	siz.y = 32;
-	spd.x = 0;
-	spd.y = 0;
-	Player player;
-	RectangleShape rect(player.getDim());
-	RectangleShape interest[6];
-	for (int i = 0; i < 6; i++) {
-		interest[i] = RectangleShape(siz2);
-		interest[i].setFillColor(Color::Red);
+namespace SGE
+{
+	Game::Game(std::string title)
+	{
+		this->title = title;
 	}
-	Clock loopClock;
-	Time loopTime;
-	rect.setFillColor(Color::Blue);
-	while (window.isOpen()) {
-		Event event;
-		while (window.pollEvent(event)) {
-			switch (event.type) {
-				case Event::Closed:
-					window.close();
-					break;
-				case Event::KeyPressed:
-					if (event.key.code == Keyboard::Space) {
-						player.jump();
-					} else if (event.key.code == Keyboard::Right) {
-						player.moveRight = true;
-					} else if (event.key.code == Keyboard::Left) {
-						player.moveLeft = true;
-					}
-					break;
-				case Event::KeyReleased:
-					if (event.key.code == Keyboard::Space) {
-						player.endJump();
-					} else if (event.key.code == Keyboard::Right) {
-						player.moveRight = false;
-					} else if (event.key.code == Keyboard::Left) {
-						player.moveLeft = false;
-					}
-					break;
+	Game::~Game()
+	{
+	}
+	int Game::Run()
+	{
+		running = true;
+
+		// Register with State Manager
+		//stateManager.RegisterGame(this);
+
+		// Register handlers with AssetManager
+
+		InitAssetHandlers();
+
+		GameLoop();
+
+		Cleanup();
+
+		return 0;
+	}
+
+	bool Game::IsRunning()
+	{
+		return running;
+	}
+
+	float Game::GetUpdateRate()
+	{
+		return updateRate;
+	}
+
+	void Game::SetUpdateRate(float newRate)
+	{
+		updateRate = newRate;
+	}
+	
+	void Game::Quit(int exitCode)
+	{
+		// Stub
+	}
+
+	void Game::InitAssetHandlers()
+	{
+		// Stub
+	}
+
+	void Game::GameLoop()
+	{
+		sf::Clock updateClock;
+		sf::Clock frameClock;
+		updateClock.restart();
+		sf::Int32 nextUpdateTime = updateClock.getElapsedTime().asMilliseconds();
+
+		// Check if StateManager loaded correctly
+
+		// Loop while running
+		{
+
+			// Get active state
+
+			// ProcessInput(currentState);
+
+			sf::Int32 updateTime = updateClock.restart().asMilliseconds();
+
+			while ((updateTime - nextUpdateTime) >= updateRate/* && updates <= maxUpdates*/)
+			{
+				// State updates
+
+				// StatManager updates
+
+				nextUpdateTime += updateRate;
 			}
+
+			// Pass frameClock time to state
+
+			// State draws
+
+			// StatManager draws
+
+			// Display Window
+
+			// StateManager does any necessary cleanup
 		}
-		loopTime = loopClock.getElapsedTime();
-		if (loopTime.asSeconds() > FRAMETIME) {
-			loopClock.restart();
-			player.move();
-			Vector2f *aoi = player.getBlocksOfInterest();
-			for (int i = 0; i < 6; i++) {
-				interest[i].setPosition(aoi[i]);
-			}
-			rect.setPosition(player.getPos());
-			window.clear();
-			for (int i = 0; i < 6; i++) {
-				window.draw(interest[i]);
-			}
-			window.draw(rect);
-			window.display();
-		}
+	}
+
+	void Game::ProcessInput(IState state)
+	{
+		// Stub
+	}
+
+	void Game::Cleanup()
+	{
+		// Stub
 	}
 }
