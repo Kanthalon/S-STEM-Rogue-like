@@ -1,29 +1,42 @@
 
 #include "Game.hpp"
+#include "StateManager.hpp"
+#include <iostream>
 
 namespace SGE
 {
 	Game::Game(std::string title)
 	{
 		this->title = title;
+		SetUpdateRate(UPDATE_RATE);
+		stateManager = &StateManager();
 	}
 	Game::~Game()
 	{
 	}
 	int Game::Run()
 	{
+		std::cout << title << "\n";
 		running = true;
 
-		// Register with State Manager
-		//stateManager.RegisterGame(this);
+		// Register with Stat Manager and State Manager
+		//statManager.RegisterGame(this);
+		stateManager->RegisterGame(this);
+
+		// Get settings
+
+		// Open window
+
 
 		// Register handlers with AssetManager
 
-		InitAssetHandlers();
+		// Initialize Stat Manager
 
 		GameLoop();
 
 		Cleanup();
+
+		running = false;
 
 		return 0;
 	}
@@ -33,22 +46,17 @@ namespace SGE
 		return running;
 	}
 
-	float Game::GetUpdateRate()
+	sf::Int32 Game::GetUpdateRate()
 	{
 		return updateRate;
 	}
 
-	void Game::SetUpdateRate(float newRate)
+	void Game::SetUpdateRate(sf::Int32 newRate)
 	{
 		updateRate = newRate;
 	}
 	
 	void Game::Quit(int exitCode)
-	{
-		// Stub
-	}
-
-	void Game::InitAssetHandlers()
 	{
 		// Stub
 	}
@@ -61,6 +69,10 @@ namespace SGE
 		sf::Int32 nextUpdateTime = updateClock.getElapsedTime().asMilliseconds();
 
 		// Check if StateManager loaded correctly
+		if (stateManager->IsEmpty())
+		{
+			std::cout<< "StateManager created.\n";
+		}
 
 		// Loop while running
 		{
@@ -92,10 +104,10 @@ namespace SGE
 		}
 	}
 
-	void Game::ProcessInput(IState state)
-	{
-		// Stub
-	}
+//	void Game::ProcessInput(IState state)
+//	{
+//		// Stub
+//	}
 
 	void Game::Cleanup()
 	{

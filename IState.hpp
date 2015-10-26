@@ -21,7 +21,7 @@ namespace SGE
 			float runningTime;
 			float pausedTime;
 
-	}
+	};
 }
 
 #endif

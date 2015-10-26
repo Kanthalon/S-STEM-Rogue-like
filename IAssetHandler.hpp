@@ -9,12 +9,12 @@ namespace SGE
 	class IAssetHandler 
 	{
 		public:
-			virtual IAssetHandler();
+			IAssetHandler();
 			virtual ~IAssetHandler();
 			virtual bool DropReference(typeAssetID id);
 			virtual bool IsLoaded();
 			virtual bool LoadAsset(typeAssetID id);
-	}
+	};
 }
 
 #endif

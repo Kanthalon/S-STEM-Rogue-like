@@ -36,6 +36,7 @@ namespace SGE
 	{
 		handlers.insert(std::pair<const typeAssetHandlerID, IAssetHandler*>(
 			0, handler));	//0 is a dummy value, add getID later
+		return false;
 	}
 
 }

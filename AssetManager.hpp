@@ -18,7 +18,7 @@ namespace SGE
 			std::map<const int, IAssetHandler*> handlers;
 
 
-	}
+	};
 };
 
 #endif

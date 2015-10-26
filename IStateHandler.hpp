@@ -9,12 +9,12 @@ namespace SGE
 	class IStateHandler 
 	{
 		public:
-			virtual IStateHandler();
+			IStateHandler();
 			virtual ~IStateHandler();
 			virtual bool DropReference(typeStateID id);
 			virtual bool IsLoaded();
 			virtual bool LoadState(typeStateID id);
-	}
+	};
 }
 
 #endif

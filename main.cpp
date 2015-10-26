@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Control.h"
 #include "Player.h"
+#include "Game.hpp"
 
 using namespace sf;
 
@@ -11,7 +12,15 @@ bool moveRight = false;
 bool moveLeft = false;
 
 
-int tempmain() {
+int main() {
+	std::cout << "Starting\n";
+	SGE::Game game = SGE::Game();
+	game.Run();
+	std::cin.get();
+}
+
+int oldmain() {
+	return 1;
 	RenderWindow window(VideoMode(300,300), "Tutorial Title", Style::Default);
 	window.setKeyRepeatEnabled(false);
 	Vector2f siz, siz2, spd;

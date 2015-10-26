@@ -19,7 +19,7 @@ namespace SGE
 		private:
 			static typeAssetHandlerID idOffset;
 			typeAssetHandlerID id;
-	}
+	};
 }
 
 #endif

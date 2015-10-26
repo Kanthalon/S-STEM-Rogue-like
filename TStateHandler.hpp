@@ -19,7 +19,7 @@ namespace SGE
 		private:
 			static typeStateHandlerID idOffset;
 			typeStateHandlerID id;
-	}
+	};
 }
 
 #endif

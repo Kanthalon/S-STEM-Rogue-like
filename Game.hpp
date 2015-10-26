@@ -2,28 +2,28 @@
 #define GAME_HPP
 
 #include <stdlib.h>
+#include "Control.h"
 #include "AssetManager.hpp"
-#include "StateManager.hpp"
 #include "IState.hpp"
 
 namespace SGE
 {
+	class StateManager;
 	class Game
 	{
 		public:
-			AssetManager assetManager;
-			StateManager stateManager;
 			Game(std::string title = "Game");
 			virtual ~Game();
 			int Run();
 			bool IsRunning();
-			float GetUpdateRate();
-			void SetUpdateRate(float newRate);
+			sf::Int32 GetUpdateRate();
+			void SetUpdateRate(sf::Int32 newRate);
 			void Quit(int exitCode);
 		private:
-			void InitAssetHandlers();
+			StateManager* stateManager;
+			AssetManager assetManager;
 			void GameLoop();
-			void ProcessInput(IState state);
+			//void ProcessInput(IState state);
 			void Cleanup();
 			bool running;
 			sf::Int32 updateRate;
